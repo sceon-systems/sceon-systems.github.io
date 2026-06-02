@@ -81,25 +81,13 @@
       letter-spacing: -0.03em;
     }
 
-    .logo {
-      width: 40px;
-      height: 40px;
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
       border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(135deg, rgba(88, 166, 255, 0.24), rgba(63, 185, 80, 0.18)),
-        var(--card);
+      background: #f7f3e8;
       border: 1px solid var(--card-border);
-      box-shadow: var(--shadow);
-    }
-
-    .logo-mark {
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
-      background: linear-gradient(135deg, var(--accent), var(--green));
-      transform: rotate(8deg);
     }
 
     .nav-links {
@@ -431,9 +419,7 @@
   <header>
     <div class="page nav">
       <a class="brand" href="#">
-        <div class="logo" aria-hidden="true">
-          <div class="logo-mark"></div>
-        </div>
+        <div class="logo-img" src="assets/sceon-logo.jpg" alt="Sceon Systems logo" />
         <span>Sceon Systems</span>
       </a>
 
@@ -450,7 +436,7 @@
       <div>
         <div class="eyebrow">
           <span class="pulse" aria-hidden="true"></span>
-          Public systems, private engineering
+          Engineering useful digital systems
         </div>
 
         <h1>Intelligent software for data, creativity, and automation.</h1>
@@ -480,7 +466,7 @@
             <p class="terminal-line">mission: build useful intelligent software</p>
             <p class="terminal-line">focus: data · creativity · automation</p>
             <p class="terminal-line">delivery: web · mobile · cloud</p>
-            <p class="terminal-line">status: active products in production</p>
+            <p class="terminal-line">status: active product development</p>
           </div>
         </div>
       </aside>
