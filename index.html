@@ -3,80 +3,638 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Sceon Systems builds intelligent software for data, creativity, and automation."
+  />
+  <meta name="theme-color" content="#0d1117" />
   <title>Sceon Systems</title>
+
   <style>
+    :root {
+      --bg: #0d1117;
+      --bg-soft: #111827;
+      --card: #161b22;
+      --card-border: #30363d;
+      --text: #f0f6fc;
+      --muted: #8b949e;
+      --soft-text: #c9d1d9;
+      --accent: #58a6ff;
+      --accent-soft: rgba(88, 166, 255, 0.12);
+      --green: #3fb950;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #f0f6fc;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(88, 166, 255, 0.14), transparent 34%),
+        radial-gradient(circle at top right, rgba(63, 185, 80, 0.08), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(13, 17, 23, 0.78);
+      border-bottom: 1px solid rgba(48, 54, 61, 0.7);
+    }
+
+    .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    main {
-      max-width: 760px;
-      padding: 40px 24px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid #30363d;
-      border-radius: 999px;
-      color: #8b949e;
-      margin-bottom: 24px;
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(88, 166, 255, 0.24), rgba(63, 185, 80, 0.18)),
+        var(--card);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+    }
+
+    .logo-mark {
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, var(--accent), var(--green));
+      transform: rotate(8deg);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
       font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 96px 0 72px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: var(--soft-text);
+      background: var(--accent-soft);
+      border: 1px solid rgba(88, 166, 255, 0.24);
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(63, 185, 80, 0.12);
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      margin: 0 0 18px;
-      letter-spacing: -2px;
+      font-size: clamp(44px, 8vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+      margin: 0 0 24px;
     }
 
-    p {
-      font-size: clamp(18px, 3vw, 24px);
-      line-height: 1.6;
-      color: #c9d1d9;
-      margin: 0 auto 30px;
+    .hero-text {
+      max-width: 680px;
+      font-size: clamp(18px, 2.3vw, 24px);
+      color: var(--soft-text);
+      margin: 0 0 32px;
     }
 
-    .highlight {
-      color: #58a6ff;
+    .hero-text strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .button.primary {
+      color: #07111f;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button.secondary {
+      color: var(--text);
+      background: rgba(22, 27, 34, 0.72);
+    }
+
+    .hero-card {
+      border: 1px solid var(--card-border);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
+        var(--card);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .terminal {
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: #010409;
+    }
+
+    .terminal-bar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--muted);
+    }
+
+    .terminal-body {
+      padding: 22px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 14px;
+      color: var(--soft-text);
+    }
+
+    .terminal-line {
+      margin: 0 0 12px;
+    }
+
+    .terminal-line span {
+      color: var(--green);
+    }
+
+    section {
+      padding: 72px 0;
+      border-top: 1px solid rgba(48, 54, 61, 0.7);
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      margin: 0 0 14px;
+    }
+
+    .section-copy {
+      color: var(--soft-text);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: rgba(22, 27, 34, 0.78);
+      padding: 22px;
+      min-height: 230px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      background: rgba(22, 27, 34, 0.72);
+      padding: 26px;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid rgba(48, 54, 61, 0.8);
+      border-radius: 16px;
+      background: rgba(13, 17, 23, 0.6);
+    }
+
+    .number {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .principle h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .status-pill {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      color: var(--soft-text);
+      background: rgba(22, 27, 34, 0.72);
+      font-size: 14px;
     }
 
     footer {
-      margin-top: 48px;
-      color: #8b949e;
-      font-size: 14px;
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(48, 54, 61, 0.7);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: unset;
+      }
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <div class="page nav">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true">
+          <div class="logo-mark"></div>
+        </div>
+        <span>Sceon Systems</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#principles">Principles</a>
+        <a href="#status">Status</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <div class="badge">Software • AI • Automation</div>
+    <section class="page hero">
+      <div>
+        <div class="eyebrow">
+          <span class="pulse" aria-hidden="true"></span>
+          Public systems, private engineering
+        </div>
 
-    <h1>Sceon Systems</h1>
+        <h1>Intelligent software for data, creativity, and automation.</h1>
 
-    <p>
-      Building intelligent software for
-      <span class="highlight">data</span>,
-      <span class="highlight">creativity</span>,
-      and <span class="highlight">automation</span>.
-    </p>
+        <p class="hero-text">
+          <strong>Sceon Systems</strong> builds and operates production-ready
+          platforms that help people turn complex digital workflows into faster,
+          clearer, and more useful software experiences.
+        </p>
 
-    <p>
-      We create private, production-ready platforms that turn complex digital workflows
-      into simple, useful tools.
-    </p>
+        <div class="actions">
+          <a class="button primary" href="#work">Explore focus areas</a>
+          <a class="button secondary" href="https://github.com/sceon-systems">View GitHub organization</a>
+        </div>
+      </div>
 
-    <footer>
-      © 2026 Sceon Systems. All rights reserved.
-    </footer>
+      <aside class="hero-card" aria-label="Sceon Systems summary">
+        <div class="terminal">
+          <div class="terminal-bar" aria-hidden="true">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <div class="terminal-body">
+            <p class="terminal-line"><span>$</span> sceon systems</p>
+            <p class="terminal-line">mission: build useful intelligent software</p>
+            <p class="terminal-line">focus: data · creativity · automation</p>
+            <p class="terminal-line">delivery: web · mobile · cloud</p>
+            <p class="terminal-line">status: active products in production</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="work">
+      <div class="page">
+        <div class="section-header">
+          <div class="section-label">What we build</div>
+          <h2>Focused platforms for real digital workflows.</h2>
+          <p class="section-copy">
+            Our work spans AI-assisted analysis, creative production tools,
+            identity and recognition systems, and internet task automation.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">AI</div>
+            <h3>Decision intelligence</h3>
+            <p>
+              Systems that turn data, signals, and structured context into
+              clearer insight for faster decision-making.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">♪</div>
+            <h3>Creative workspaces</h3>
+            <p>
+              Tools that support music, media, and creative workflows with
+              intelligent assistance and production-focused interfaces.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">ID</div>
+            <h3>Recognition platforms</h3>
+            <p>
+              Applied computer vision systems for identity, matching, and
+              insight-driven recognition workflows.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">↻</div>
+            <h3>Task automation</h3>
+            <p>
+              Internet monitoring and task-management tools that reduce
+              repetitive work and help users act at the right moment.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles">
+      <div class="page split">
+        <div class="section-header">
+          <div class="section-label">How we work</div>
+          <h2>Built with practical engineering discipline.</h2>
+          <p class="section-copy">
+            We focus on products that are useful, reliable, and understandable.
+            The goal is not to add complexity. The goal is to remove it.
+          </p>
+
+          <div class="status">
+            <span class="status-pill">Web platforms</span>
+            <span class="status-pill">Mobile-ready experiences</span>
+            <span class="status-pill">Private repositories</span>
+            <span class="status-pill">Public deployments</span>
+          </div>
+        </div>
+
+        <div class="panel principles">
+          <div class="principle">
+            <div class="number">01</div>
+            <div>
+              <h3>Usefulness first</h3>
+              <p>
+                Every product should solve a clear user problem before adding
+                advanced features or technical complexity.
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="number">02</div>
+            <div>
+              <h3>Reliable foundations</h3>
+              <p>
+                We prefer stable systems, clear workflows, and careful
+                deployment over unnecessary experimentation in production.
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="number">03</div>
+            <div>
+              <h3>Intelligence with control</h3>
+              <p>
+                AI should assist, filter, summarize, and accelerate work while
+                keeping the user in control of important decisions.
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="number">04</div>
+            <div>
+              <h3>Simple interfaces</h3>
+              <p>
+                Powerful software should still feel approachable, fast, and
+                direct for the people using it every day.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status">
+      <div class="page">
+        <div class="section-header">
+          <div class="section-label">Repository status</div>
+          <h2>Most engineering work remains private.</h2>
+          <p class="section-copy">
+            This public repository hosts the Sceon Systems website. Product
+            source code, deployment infrastructure, and internal implementation
+            details are maintained in private repositories.
+          </p>
+        </div>
+
+        <div class="panel">
+          <p>
+            Sceon Systems maintains public-facing products while keeping core
+            engineering repositories private for security, operational, and
+            product-development reasons.
+          </p>
+          <p>
+            Public information here is intended to describe the organization,
+            not expose implementation details of active platforms.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="page footer-inner">
+      <span>© 2026 Sceon Systems. All rights reserved.</span>
+      <span>Building intelligent software for data, creativity, and automation.</span>
+    </div>
+  </footer>
 </body>
 </html>
