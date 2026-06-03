@@ -81,13 +81,26 @@
       letter-spacing: -0.03em;
     }
 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
     .logo-img {
-      width: 44px;
-      height: 44px;
-      object-fit: contain;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
       background: #f7f3e8;
       border: 1px solid var(--card-border);
+      flex-shrink: 0;
     }
 
     .nav-links {
