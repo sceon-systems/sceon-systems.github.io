@@ -13,7 +13,6 @@
   <style>
     :root {
       --bg: #0d1117;
-      --bg-soft: #111827;
       --card: #161b22;
       --card-border: #30363d;
       --text: #f0f6fc;
@@ -61,12 +60,12 @@
       top: 0;
       z-index: 10;
       backdrop-filter: blur(18px);
-      background: rgba(13, 17, 23, 0.78);
+      background: rgba(13, 17, 23, 0.82);
       border-bottom: 1px solid rgba(48, 54, 61, 0.7);
     }
 
     .nav {
-      min-height: 76px;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -74,33 +73,40 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      min-width: 0;
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1;
       white-space: nowrap;
     }
 
-    .logo-img {
-      width: 36px;
-      height: 36px;
-      display: block;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 10px;
+    .brand-name {
+      display: inline-block;
+      color: var(--text);
+    }
+
+    .logo-wrap {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 38px;
+      border-radius: 12px;
+      overflow: hidden;
       background: #f7f3e8;
       border: 1px solid var(--card-border);
-      flex-shrink: 0;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      object-position: center;
     }
 
     .nav-links {
@@ -238,6 +244,10 @@
       margin: 0 0 12px;
     }
 
+    .terminal-line:last-child {
+      margin-bottom: 0;
+    }
+
     .terminal-line span {
       color: var(--green);
     }
@@ -276,16 +286,18 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .card {
       border: 1px solid var(--card-border);
       border-radius: 20px;
       background: rgba(22, 27, 34, 0.78);
-      padding: 22px;
-      min-height: 230px;
+      padding: 24px;
+      min-height: 220px;
+      overflow-wrap: normal;
+      word-break: normal;
     }
 
     .card-icon {
@@ -301,16 +313,17 @@
     }
 
     .card h3 {
-      font-size: 20px;
-      line-height: 1.2;
-      margin: 0 0 10px;
-      letter-spacing: -0.03em;
+      font-size: 19px;
+      line-height: 1.25;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
     }
 
     .card p {
       color: var(--muted);
       margin: 0;
       font-size: 15px;
+      line-height: 1.65;
     }
 
     .split {
@@ -400,7 +413,7 @@
       }
 
       .grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .nav-links {
@@ -413,8 +426,34 @@
         width: min(100% - 28px, 1120px);
       }
 
+      .nav {
+        min-height: 66px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .logo-wrap {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+      }
+
       .hero {
-        padding-top: 70px;
+        padding: 70px 0 56px;
+      }
+
+      h1 {
+        letter-spacing: -0.055em;
+      }
+
+      .actions {
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
       }
 
       .grid {
@@ -424,6 +463,11 @@
       .card {
         min-height: unset;
       }
+
+      .terminal-body {
+        font-size: 13px;
+        padding: 18px;
+      }
     }
   </style>
 </head>
@@ -431,9 +475,11 @@
 <body>
   <header>
     <div class="page nav">
-      <a class="brand" href="#">
-        <div class="logo-img" src="assets/sceon-logo.jpg" alt="Sceon Systems logo" />
-        <span>Sceon Systems</span>
+      <a class="brand" href="#" aria-label="Sceon Systems home">
+        <span class="logo-wrap">
+          <img class="logo-img" src="assets/sceon-logo.png" alt="" />
+        </span>
+        <span class="brand-name">Sceon Systems</span>
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
@@ -462,7 +508,9 @@
 
         <div class="actions">
           <a class="button primary" href="#work">Explore focus areas</a>
-          <a class="button secondary" href="https://github.com/sceon-systems">View GitHub organization</a>
+          <a class="button secondary" href="https://github.com/sceon-systems">
+            View GitHub organization
+          </a>
         </div>
       </div>
 
@@ -491,45 +539,45 @@
           <div class="section-label">What we build</div>
           <h2>Focused platforms for real digital workflows.</h2>
           <p class="section-copy">
-            Our work spans AI-assisted analysis, creative production tools,
-            identity and recognition systems, and internet task automation.
+            Our work spans intelligent software, digital workspaces, applied
+            platforms, and workflow automation.
           </p>
         </div>
 
         <div class="grid">
           <article class="card">
             <div class="card-icon">AI</div>
-            <h3>Decision intelligence</h3>
+            <h3>Intelligent systems</h3>
             <p>
-              Systems that turn data, signals, and structured context into
-              clearer insight for faster decision-making.
+              Software that uses data, context, and automation to support
+              clearer, faster digital workflows.
             </p>
           </article>
 
           <article class="card">
-            <div class="card-icon">♪</div>
-            <h3>Creative workspaces</h3>
+            <div class="card-icon">UX</div>
+            <h3>Digital workspaces</h3>
             <p>
-              Tools that support music, media, and creative workflows with
-              intelligent assistance and production-focused interfaces.
+              Interfaces designed to help users create, manage, and interact
+              with complex tools more easily.
             </p>
           </article>
 
           <article class="card">
-            <div class="card-icon">ID</div>
-            <h3>Recognition platforms</h3>
+            <div class="card-icon">OP</div>
+            <h3>Applied platforms</h3>
             <p>
-              Applied computer vision systems for identity, matching, and
-              insight-driven recognition workflows.
+              Practical software systems built around reliability, usability,
+              and real-world operational needs.
             </p>
           </article>
 
           <article class="card">
             <div class="card-icon">↻</div>
-            <h3>Task automation</h3>
+            <h3>Workflow automation</h3>
             <p>
-              Internet monitoring and task-management tools that reduce
-              repetitive work and help users act at the right moment.
+              Tools that reduce repetitive work, organize tasks, and help users
+              act when important changes happen.
             </p>
           </article>
         </div>
@@ -616,9 +664,9 @@
 
         <div class="panel">
           <p>
-            Sceon Systems maintains public-facing products while keeping core
-            engineering repositories private for security, operational, and
-            product-development reasons.
+            Sceon Systems maintains public-facing software initiatives while
+            keeping core engineering repositories private for security,
+            operational, and product-development reasons.
           </p>
           <p>
             Public information here is intended to describe the organization,
