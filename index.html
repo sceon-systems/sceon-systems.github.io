@@ -333,6 +333,22 @@
       align-items: start;
     }
 
+    .status {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .status-pill {
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--card-border);
+      color: var(--soft-text);
+      background: rgba(22, 27, 34, 0.72);
+      font-size: 14px;
+    }
+
     .panel {
       border: 1px solid var(--card-border);
       border-radius: 24px;
@@ -377,20 +393,14 @@
       font-size: 15px;
     }
 
-    .status {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 26px;
+    .closing-panel {
+      max-width: 900px;
     }
 
-    .status-pill {
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--card-border);
+    .closing-panel p {
+      margin: 0;
       color: var(--soft-text);
-      background: rgba(22, 27, 34, 0.72);
-      font-size: 14px;
+      font-size: 18px;
     }
 
     footer {
@@ -485,7 +495,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#work">Work</a>
         <a href="#principles">Principles</a>
-        <a href="#status">Status</a>
+        <a href="#focus">Focus</a>
       </nav>
     </div>
   </header>
@@ -527,7 +537,7 @@
             <p class="terminal-line">mission: build useful intelligent software</p>
             <p class="terminal-line">focus: data · creativity · automation</p>
             <p class="terminal-line">delivery: web · mobile · cloud</p>
-            <p class="terminal-line">status: active product development</p>
+            <p class="terminal-line">approach: practical, reliable, user-focused</p>
           </div>
         </div>
       </aside>
@@ -593,14 +603,15 @@
             We focus on products that are useful, reliable, and understandable.
             The goal is not to add complexity. The goal is to remove it.
           </p>
-          
-           <div class="status">
-               <span class="status-pill">Useful products</span>
-               <span class="status-pill">Reliable systems</span>
-               <span class="status-pill">Clear workflows</span>
-               <span class="status-pill">User-focused design</span>
-           </div>
-          
+
+          <div class="status">
+            <span class="status-pill">Useful products</span>
+            <span class="status-pill">Reliable systems</span>
+            <span class="status-pill">Clear workflows</span>
+            <span class="status-pill">User-focused design</span>
+          </div>
+        </div>
+
         <div class="panel principles">
           <div class="principle">
             <div class="number">01</div>
@@ -649,27 +660,23 @@
       </div>
     </section>
 
-    <section id="status">
+    <section id="focus">
       <div class="page">
         <div class="section-header">
-          <div class="section-label">Repository status</div>
-          <h2>Most engineering work remains private.</h2>
+          <div class="section-label">Current focus</div>
+          <h2>Building software that turns complexity into useful action.</h2>
           <p class="section-copy">
-            This public repository hosts the Sceon Systems website. Product
-            source code, deployment infrastructure, and internal implementation
-            details are maintained in private repositories.
+            Sceon Systems develops digital products across data, creativity,
+            and automation with a focus on reliability, clarity, and practical
+            user value.
           </p>
         </div>
 
-        <div class="panel">
+        <div class="panel closing-panel">
           <p>
-            Sceon Systems maintains public-facing software initiatives while
-            keeping core engineering repositories private for security,
-            operational, and product-development reasons.
-          </p>
-          <p>
-            Public information here is intended to describe the organization,
-            not expose implementation details of active platforms.
+            We design software for people who need tools that feel fast,
+            understandable, and dependable — from intelligent analysis to
+            creative workflows and automation-focused experiences.
           </p>
         </div>
       </div>
